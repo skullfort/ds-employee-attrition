@@ -1,0 +1,116 @@
+2023-06-04 23:38:54,702 [INFO]  
+========== start: fit model
+2023-06-04 23:38:54,703 [WARNING]  Already bound, ignoring bind()
+2023-06-04 23:38:56,861 [INFO]  Epoch[0] Batch [0-320]	Speed: 2385.33 samples/sec	cross-entropy=0.350613	gender-accuracy=0.909073
+2023-06-04 23:38:59,001 [INFO]  Epoch[0] Train-cross-entropy=0.345904
+2023-06-04 23:38:59,001 [INFO]  Epoch[0] Train-gender-accuracy=0.903854
+2023-06-04 23:38:59,002 [INFO]  Epoch[0] Time cost=4.297
+2023-06-04 23:38:59,008 [INFO]  Saved checkpoint to "imputer_gen/model-0000.params"
+2023-06-04 23:38:59,410 [INFO]  Epoch[0] Validation-cross-entropy=0.353308
+2023-06-04 23:38:59,411 [INFO]  Epoch[0] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:01,636 [INFO]  Epoch[1] Batch [0-320]	Speed: 2309.53 samples/sec	cross-entropy=0.318090	gender-accuracy=0.909073
+2023-06-04 23:39:03,781 [INFO]  Epoch[1] Train-cross-entropy=0.325231
+2023-06-04 23:39:03,782 [INFO]  Epoch[1] Train-gender-accuracy=0.903951
+2023-06-04 23:39:03,783 [INFO]  Epoch[1] Time cost=4.371
+2023-06-04 23:39:03,788 [INFO]  Saved checkpoint to "imputer_gen/model-0001.params"
+2023-06-04 23:39:04,197 [INFO]  Epoch[1] Validation-cross-entropy=0.342586
+2023-06-04 23:39:04,198 [INFO]  Epoch[1] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:06,366 [INFO]  Epoch[2] Batch [0-320]	Speed: 2371.81 samples/sec	cross-entropy=0.313146	gender-accuracy=0.909073
+2023-06-04 23:39:08,612 [INFO]  Epoch[2] Train-cross-entropy=0.320715
+2023-06-04 23:39:08,612 [INFO]  Epoch[2] Train-gender-accuracy=0.903951
+2023-06-04 23:39:08,613 [INFO]  Epoch[2] Time cost=4.414
+2023-06-04 23:39:08,617 [INFO]  Saved checkpoint to "imputer_gen/model-0002.params"
+2023-06-04 23:39:09,025 [INFO]  Epoch[2] Validation-cross-entropy=0.340290
+2023-06-04 23:39:09,026 [INFO]  Epoch[2] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:11,288 [INFO]  Epoch[3] Batch [0-320]	Speed: 2270.83 samples/sec	cross-entropy=0.310962	gender-accuracy=0.909073
+2023-06-04 23:39:13,462 [INFO]  Epoch[3] Train-cross-entropy=0.318475
+2023-06-04 23:39:13,463 [INFO]  Epoch[3] Train-gender-accuracy=0.903951
+2023-06-04 23:39:13,464 [INFO]  Epoch[3] Time cost=4.437
+2023-06-04 23:39:13,468 [INFO]  Saved checkpoint to "imputer_gen/model-0003.params"
+2023-06-04 23:39:13,880 [INFO]  Epoch[3] Validation-cross-entropy=0.338739
+2023-06-04 23:39:13,881 [INFO]  Epoch[3] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:16,153 [INFO]  Epoch[4] Batch [0-320]	Speed: 2262.40 samples/sec	cross-entropy=0.309661	gender-accuracy=0.909073
+2023-06-04 23:39:18,303 [INFO]  Epoch[4] Train-cross-entropy=0.317071
+2023-06-04 23:39:18,303 [INFO]  Epoch[4] Train-gender-accuracy=0.903951
+2023-06-04 23:39:18,304 [INFO]  Epoch[4] Time cost=4.422
+2023-06-04 23:39:18,309 [INFO]  Saved checkpoint to "imputer_gen/model-0004.params"
+2023-06-04 23:39:18,716 [INFO]  Epoch[4] Validation-cross-entropy=0.337818
+2023-06-04 23:39:18,716 [INFO]  Epoch[4] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:20,890 [INFO]  Epoch[5] Batch [0-320]	Speed: 2364.14 samples/sec	cross-entropy=0.308666	gender-accuracy=0.909073
+2023-06-04 23:39:23,113 [INFO]  Epoch[5] Train-cross-entropy=0.316026
+2023-06-04 23:39:23,114 [INFO]  Epoch[5] Train-gender-accuracy=0.903951
+2023-06-04 23:39:23,115 [INFO]  Epoch[5] Time cost=4.398
+2023-06-04 23:39:23,120 [INFO]  Saved checkpoint to "imputer_gen/model-0005.params"
+2023-06-04 23:39:23,532 [INFO]  Epoch[5] Validation-cross-entropy=0.337241
+2023-06-04 23:39:23,532 [INFO]  Epoch[5] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:25,764 [INFO]  Epoch[6] Batch [0-320]	Speed: 2303.74 samples/sec	cross-entropy=0.307877	gender-accuracy=0.909073
+2023-06-04 23:39:27,896 [INFO]  Epoch[6] Train-cross-entropy=0.315203
+2023-06-04 23:39:27,896 [INFO]  Epoch[6] Train-gender-accuracy=0.903951
+2023-06-04 23:39:27,897 [INFO]  Epoch[6] Time cost=4.364
+2023-06-04 23:39:27,902 [INFO]  Saved checkpoint to "imputer_gen/model-0006.params"
+2023-06-04 23:39:28,311 [INFO]  Epoch[6] Validation-cross-entropy=0.336871
+2023-06-04 23:39:28,312 [INFO]  Epoch[6] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:30,489 [INFO]  Epoch[7] Batch [0-320]	Speed: 2361.29 samples/sec	cross-entropy=0.307211	gender-accuracy=0.909073
+2023-06-04 23:39:32,644 [INFO]  Epoch[7] Train-cross-entropy=0.314501
+2023-06-04 23:39:32,645 [INFO]  Epoch[7] Train-gender-accuracy=0.903951
+2023-06-04 23:39:32,646 [INFO]  Epoch[7] Time cost=4.333
+2023-06-04 23:39:32,651 [INFO]  Saved checkpoint to "imputer_gen/model-0007.params"
+2023-06-04 23:39:33,058 [INFO]  Epoch[7] Validation-cross-entropy=0.336582
+2023-06-04 23:39:33,059 [INFO]  Epoch[7] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:35,333 [INFO]  Epoch[8] Batch [0-320]	Speed: 2260.27 samples/sec	cross-entropy=0.306644	gender-accuracy=0.909073
+2023-06-04 23:39:37,596 [INFO]  Epoch[8] Train-cross-entropy=0.313909
+2023-06-04 23:39:37,596 [INFO]  Epoch[8] Train-gender-accuracy=0.903854
+2023-06-04 23:39:37,597 [INFO]  Epoch[8] Time cost=4.538
+2023-06-04 23:39:37,602 [INFO]  Saved checkpoint to "imputer_gen/model-0008.params"
+2023-06-04 23:39:38,023 [INFO]  Epoch[8] Validation-cross-entropy=0.336402
+2023-06-04 23:39:38,024 [INFO]  Epoch[8] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:40,320 [INFO]  Epoch[9] Batch [0-320]	Speed: 2237.22 samples/sec	cross-entropy=0.306166	gender-accuracy=0.909073
+2023-06-04 23:39:42,542 [INFO]  Epoch[9] Train-cross-entropy=0.313423
+2023-06-04 23:39:42,543 [INFO]  Epoch[9] Train-gender-accuracy=0.903854
+2023-06-04 23:39:42,543 [INFO]  Epoch[9] Time cost=4.518
+2023-06-04 23:39:42,550 [INFO]  Saved checkpoint to "imputer_gen/model-0009.params"
+2023-06-04 23:39:42,967 [INFO]  Epoch[9] Validation-cross-entropy=0.336345
+2023-06-04 23:39:42,968 [INFO]  Epoch[9] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:45,225 [INFO]  Epoch[10] Batch [0-320]	Speed: 2277.30 samples/sec	cross-entropy=0.305743	gender-accuracy=0.909073
+2023-06-04 23:39:47,385 [INFO]  Epoch[10] Train-cross-entropy=0.312997
+2023-06-04 23:39:47,385 [INFO]  Epoch[10] Train-gender-accuracy=0.903854
+2023-06-04 23:39:47,386 [INFO]  Epoch[10] Time cost=4.418
+2023-06-04 23:39:47,391 [INFO]  Saved checkpoint to "imputer_gen/model-0010.params"
+2023-06-04 23:39:47,794 [INFO]  Epoch[10] Validation-cross-entropy=0.336301
+2023-06-04 23:39:47,795 [INFO]  Epoch[10] Validation-gender-accuracy=0.894643
+2023-06-04 23:39:49,966 [INFO]  Epoch[11] Batch [0-320]	Speed: 2367.73 samples/sec	cross-entropy=0.305354	gender-accuracy=0.909073
+2023-06-04 23:39:52,117 [INFO]  Epoch[11] Train-cross-entropy=0.312605
+2023-06-04 23:39:52,118 [INFO]  Epoch[11] Train-gender-accuracy=0.903854
+2023-06-04 23:39:52,118 [INFO]  Epoch[11] Time cost=4.323
+2023-06-04 23:39:52,123 [INFO]  Saved checkpoint to "imputer_gen/model-0011.params"
+2023-06-04 23:39:52,530 [INFO]  Epoch[11] Validation-cross-entropy=0.336302
+2023-06-04 23:39:52,531 [INFO]  Epoch[11] Validation-gender-accuracy=0.893750
+2023-06-04 23:39:54,718 [INFO]  Epoch[12] Batch [0-320]	Speed: 2349.83 samples/sec	cross-entropy=0.305049	gender-accuracy=0.909073
+2023-06-04 23:39:56,980 [INFO]  Epoch[12] Train-cross-entropy=0.312422
+2023-06-04 23:39:56,981 [INFO]  Epoch[12] Train-gender-accuracy=0.903854
+2023-06-04 23:39:56,982 [INFO]  Epoch[12] Time cost=4.451
+2023-06-04 23:39:56,991 [INFO]  Saved checkpoint to "imputer_gen/model-0012.params"
+2023-06-04 23:39:57,477 [INFO]  Epoch[12] Validation-cross-entropy=0.336581
+2023-06-04 23:39:57,478 [INFO]  Epoch[12] Validation-gender-accuracy=0.893750
+2023-06-04 23:40:00,071 [INFO]  Epoch[13] Batch [0-320]	Speed: 1988.64 samples/sec	cross-entropy=0.304951	gender-accuracy=0.909073
+2023-06-04 23:40:02,355 [INFO]  Epoch[13] Train-cross-entropy=0.312128
+2023-06-04 23:40:02,356 [INFO]  Epoch[13] Train-gender-accuracy=0.903854
+2023-06-04 23:40:02,357 [INFO]  Epoch[13] Time cost=4.877
+2023-06-04 23:40:02,363 [INFO]  Saved checkpoint to "imputer_gen/model-0013.params"
+2023-06-04 23:40:02,766 [INFO]  Epoch[13] Validation-cross-entropy=0.336413
+2023-06-04 23:40:02,766 [INFO]  Epoch[13] Validation-gender-accuracy=0.893750
+2023-06-04 23:40:05,006 [INFO]  Epoch[14] Batch [0-320]	Speed: 2293.92 samples/sec	cross-entropy=0.304525	gender-accuracy=0.909073
+2023-06-04 23:40:07,266 [INFO]  Epoch[14] Train-cross-entropy=0.311756
+2023-06-04 23:40:07,267 [INFO]  Epoch[14] Train-gender-accuracy=0.903854
+2023-06-04 23:40:07,267 [INFO]  Epoch[14] Time cost=4.501
+2023-06-04 23:40:07,273 [INFO]  Saved checkpoint to "imputer_gen/model-0014.params"
+2023-06-04 23:40:07,677 [INFO]  Epoch[14] Validation-cross-entropy=0.336404
+2023-06-04 23:40:07,678 [INFO]  Epoch[14] Validation-gender-accuracy=0.893750
+2023-06-04 23:40:09,899 [INFO]  Epoch[15] Batch [0-320]	Speed: 2314.73 samples/sec	cross-entropy=0.304293	gender-accuracy=0.909073
+2023-06-04 23:40:12,113 [INFO]  Epoch[15] Train-cross-entropy=0.311522
+2023-06-04 23:40:12,114 [INFO]  Epoch[15] Train-gender-accuracy=0.903854
+2023-06-04 23:40:12,115 [INFO]  Epoch[15] Time cost=4.436
+2023-06-04 23:40:12,121 [INFO]  Saved checkpoint to "imputer_gen/model-0015.params"
+2023-06-04 23:40:12,544 [INFO]  No improvement detected for 5 epochs compared to 0.33630060223596436 last error obtained: 0.3363901429942676, stopping here
+2023-06-04 23:40:12,544 [INFO]  
+========== done (77.84223794937134 s) fit model

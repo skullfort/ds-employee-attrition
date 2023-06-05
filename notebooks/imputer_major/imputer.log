@@ -1,0 +1,88 @@
+2023-06-04 23:40:18,178 [INFO]  
+========== start: fit model
+2023-06-04 23:40:18,178 [WARNING]  Already bound, ignoring bind()
+2023-06-04 23:40:20,777 [INFO]  Epoch[0] Batch [0-356]	Speed: 2202.50 samples/sec	cross-entropy=0.512670	major_discipline-accuracy=0.890056
+2023-06-04 23:40:23,344 [INFO]  Epoch[0] Train-cross-entropy=0.503769
+2023-06-04 23:40:23,345 [INFO]  Epoch[0] Train-major_discipline-accuracy=0.886499
+2023-06-04 23:40:23,345 [INFO]  Epoch[0] Time cost=5.166
+2023-06-04 23:40:23,350 [INFO]  Saved checkpoint to "imputer_major/model-0000.params"
+2023-06-04 23:40:23,818 [INFO]  Epoch[0] Validation-cross-entropy=0.468097
+2023-06-04 23:40:23,818 [INFO]  Epoch[0] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:40:26,540 [INFO]  Epoch[1] Batch [0-356]	Speed: 2099.68 samples/sec	cross-entropy=0.459089	major_discipline-accuracy=0.892157
+2023-06-04 23:40:29,173 [INFO]  Epoch[1] Train-cross-entropy=0.469144
+2023-06-04 23:40:29,173 [INFO]  Epoch[1] Train-major_discipline-accuracy=0.887553
+2023-06-04 23:40:29,174 [INFO]  Epoch[1] Time cost=5.355
+2023-06-04 23:40:29,178 [INFO]  Saved checkpoint to "imputer_major/model-0001.params"
+2023-06-04 23:40:29,643 [INFO]  Epoch[1] Validation-cross-entropy=0.461665
+2023-06-04 23:40:29,643 [INFO]  Epoch[1] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:40:32,256 [INFO]  Epoch[2] Batch [0-356]	Speed: 2186.09 samples/sec	cross-entropy=0.449542	major_discipline-accuracy=0.892157
+2023-06-04 23:40:34,872 [INFO]  Epoch[2] Train-cross-entropy=0.461114
+2023-06-04 23:40:34,872 [INFO]  Epoch[2] Train-major_discipline-accuracy=0.887553
+2023-06-04 23:40:34,872 [INFO]  Epoch[2] Time cost=5.228
+2023-06-04 23:40:34,876 [INFO]  Saved checkpoint to "imputer_major/model-0002.params"
+2023-06-04 23:40:35,345 [INFO]  Epoch[2] Validation-cross-entropy=0.460045
+2023-06-04 23:40:35,345 [INFO]  Epoch[2] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:40:38,013 [INFO]  Epoch[3] Batch [0-356]	Speed: 2140.99 samples/sec	cross-entropy=0.444894	major_discipline-accuracy=0.892157
+2023-06-04 23:40:40,758 [INFO]  Epoch[3] Train-cross-entropy=0.456917
+2023-06-04 23:40:40,758 [INFO]  Epoch[3] Train-major_discipline-accuracy=0.887553
+2023-06-04 23:40:40,758 [INFO]  Epoch[3] Time cost=5.413
+2023-06-04 23:40:40,763 [INFO]  Saved checkpoint to "imputer_major/model-0003.params"
+2023-06-04 23:40:41,251 [INFO]  Epoch[3] Validation-cross-entropy=0.459107
+2023-06-04 23:40:41,251 [INFO]  Epoch[3] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:40:44,161 [INFO]  Epoch[4] Batch [0-356]	Speed: 1962.69 samples/sec	cross-entropy=0.441848	major_discipline-accuracy=0.892157
+2023-06-04 23:40:46,826 [INFO]  Epoch[4] Train-cross-entropy=0.454130
+2023-06-04 23:40:46,826 [INFO]  Epoch[4] Train-major_discipline-accuracy=0.887553
+2023-06-04 23:40:46,826 [INFO]  Epoch[4] Time cost=5.575
+2023-06-04 23:40:46,830 [INFO]  Saved checkpoint to "imputer_major/model-0004.params"
+2023-06-04 23:40:47,302 [INFO]  Epoch[4] Validation-cross-entropy=0.458702
+2023-06-04 23:40:47,302 [INFO]  Epoch[4] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:40:49,939 [INFO]  Epoch[5] Batch [0-356]	Speed: 2165.48 samples/sec	cross-entropy=0.439504	major_discipline-accuracy=0.891982
+2023-06-04 23:40:52,579 [INFO]  Epoch[5] Train-cross-entropy=0.451923
+2023-06-04 23:40:52,579 [INFO]  Epoch[5] Train-major_discipline-accuracy=0.887465
+2023-06-04 23:40:52,580 [INFO]  Epoch[5] Time cost=5.278
+2023-06-04 23:40:52,584 [INFO]  Saved checkpoint to "imputer_major/model-0005.params"
+2023-06-04 23:40:53,040 [INFO]  Epoch[5] Validation-cross-entropy=0.458562
+2023-06-04 23:40:53,041 [INFO]  Epoch[5] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:40:55,767 [INFO]  Epoch[6] Batch [0-356]	Speed: 2094.62 samples/sec	cross-entropy=0.437607	major_discipline-accuracy=0.892157
+2023-06-04 23:40:58,522 [INFO]  Epoch[6] Train-cross-entropy=0.450160
+2023-06-04 23:40:58,523 [INFO]  Epoch[6] Train-major_discipline-accuracy=0.887553
+2023-06-04 23:40:58,523 [INFO]  Epoch[6] Time cost=5.482
+2023-06-04 23:40:58,528 [INFO]  Saved checkpoint to "imputer_major/model-0006.params"
+2023-06-04 23:40:59,015 [INFO]  Epoch[6] Validation-cross-entropy=0.458458
+2023-06-04 23:40:59,015 [INFO]  Epoch[6] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:41:02,012 [INFO]  Epoch[7] Batch [0-356]	Speed: 1905.63 samples/sec	cross-entropy=0.436013	major_discipline-accuracy=0.892157
+2023-06-04 23:41:04,662 [INFO]  Epoch[7] Train-cross-entropy=0.448720
+2023-06-04 23:41:04,662 [INFO]  Epoch[7] Train-major_discipline-accuracy=0.887553
+2023-06-04 23:41:04,662 [INFO]  Epoch[7] Time cost=5.647
+2023-06-04 23:41:04,668 [INFO]  Saved checkpoint to "imputer_major/model-0007.params"
+2023-06-04 23:41:05,169 [INFO]  Epoch[7] Validation-cross-entropy=0.458533
+2023-06-04 23:41:05,169 [INFO]  Epoch[7] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:41:07,839 [INFO]  Epoch[8] Batch [0-356]	Speed: 2139.16 samples/sec	cross-entropy=0.434677	major_discipline-accuracy=0.892157
+2023-06-04 23:41:10,730 [INFO]  Epoch[8] Train-cross-entropy=0.447357
+2023-06-04 23:41:10,730 [INFO]  Epoch[8] Train-major_discipline-accuracy=0.887465
+2023-06-04 23:41:10,731 [INFO]  Epoch[8] Time cost=5.562
+2023-06-04 23:41:10,736 [INFO]  Saved checkpoint to "imputer_major/model-0008.params"
+2023-06-04 23:41:11,206 [INFO]  Epoch[8] Validation-cross-entropy=0.458550
+2023-06-04 23:41:11,206 [INFO]  Epoch[8] Validation-major_discipline-accuracy=0.889241
+2023-06-04 23:41:14,158 [INFO]  Epoch[9] Batch [0-356]	Speed: 1934.78 samples/sec	cross-entropy=0.433460	major_discipline-accuracy=0.892157
+2023-06-04 23:41:16,787 [INFO]  Epoch[9] Train-cross-entropy=0.446230
+2023-06-04 23:41:16,787 [INFO]  Epoch[9] Train-major_discipline-accuracy=0.887465
+2023-06-04 23:41:16,788 [INFO]  Epoch[9] Time cost=5.581
+2023-06-04 23:41:16,792 [INFO]  Saved checkpoint to "imputer_major/model-0009.params"
+2023-06-04 23:41:17,255 [INFO]  Epoch[9] Validation-cross-entropy=0.458890
+2023-06-04 23:41:17,256 [INFO]  Epoch[9] Validation-major_discipline-accuracy=0.888449
+2023-06-04 23:41:19,861 [INFO]  Epoch[10] Batch [0-356]	Speed: 2192.68 samples/sec	cross-entropy=0.432509	major_discipline-accuracy=0.892157
+2023-06-04 23:41:22,449 [INFO]  Epoch[10] Train-cross-entropy=0.445396
+2023-06-04 23:41:22,449 [INFO]  Epoch[10] Train-major_discipline-accuracy=0.887465
+2023-06-04 23:41:22,449 [INFO]  Epoch[10] Time cost=5.194
+2023-06-04 23:41:22,454 [INFO]  Saved checkpoint to "imputer_major/model-0010.params"
+2023-06-04 23:41:22,916 [INFO]  Epoch[10] Validation-cross-entropy=0.459186
+2023-06-04 23:41:22,916 [INFO]  Epoch[10] Validation-major_discipline-accuracy=0.888449
+2023-06-04 23:41:25,512 [INFO]  Epoch[11] Batch [0-356]	Speed: 2199.98 samples/sec	cross-entropy=0.431425	major_discipline-accuracy=0.892332
+2023-06-04 23:41:28,063 [INFO]  Epoch[11] Train-cross-entropy=0.444323
+2023-06-04 23:41:28,063 [INFO]  Epoch[11] Train-major_discipline-accuracy=0.887553
+2023-06-04 23:41:28,063 [INFO]  Epoch[11] Time cost=5.147
+2023-06-04 23:41:28,067 [INFO]  Saved checkpoint to "imputer_major/model-0011.params"
+2023-06-04 23:41:28,535 [INFO]  No improvement detected for 5 epochs compared to 0.4584576052766812 last error obtained: 0.45925490657174134, stopping here
+2023-06-04 23:41:28,535 [INFO]  
+========== done (70.3577790260315 s) fit model
