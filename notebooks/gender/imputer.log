@@ -1,0 +1,53 @@
+2023-06-07 23:07:27,561 [INFO]  
+========== start: fit model
+2023-06-07 23:07:27,562 [WARNING]  Already bound, ignoring bind()
+2023-06-07 23:07:31,734 [INFO]  Epoch[0] Batch [0-398]	Speed: 1533.10 samples/sec	cross-entropy=0.356133	gender-accuracy=0.903979
+2023-06-07 23:07:35,896 [INFO]  Epoch[0] Train-cross-entropy=0.343402
+2023-06-07 23:07:35,896 [INFO]  Epoch[0] Train-gender-accuracy=0.903737
+2023-06-07 23:07:35,897 [INFO]  Epoch[0] Time cost=8.334
+2023-06-07 23:07:35,899 [INFO]  Saved checkpoint to "gender\model-0000.params"
+2023-06-07 23:07:36,581 [INFO]  Epoch[0] Validation-cross-entropy=0.348817
+2023-06-07 23:07:36,581 [INFO]  Epoch[0] Validation-gender-accuracy=0.892556
+2023-06-07 23:07:40,700 [INFO]  Epoch[1] Batch [0-398]	Speed: 1550.77 samples/sec	cross-entropy=0.328298	gender-accuracy=0.903979
+2023-06-07 23:07:44,850 [INFO]  Epoch[1] Train-cross-entropy=0.324988
+2023-06-07 23:07:44,851 [INFO]  Epoch[1] Train-gender-accuracy=0.903737
+2023-06-07 23:07:44,851 [INFO]  Epoch[1] Time cost=8.269
+2023-06-07 23:07:44,855 [INFO]  Saved checkpoint to "gender\model-0001.params"
+2023-06-07 23:07:45,542 [INFO]  Epoch[1] Validation-cross-entropy=0.346684
+2023-06-07 23:07:45,543 [INFO]  Epoch[1] Validation-gender-accuracy=0.892556
+2023-06-07 23:07:49,697 [INFO]  Epoch[2] Batch [0-398]	Speed: 1537.12 samples/sec	cross-entropy=0.322799	gender-accuracy=0.903979
+2023-06-07 23:07:53,958 [INFO]  Epoch[2] Train-cross-entropy=0.320520
+2023-06-07 23:07:53,959 [INFO]  Epoch[2] Train-gender-accuracy=0.903737
+2023-06-07 23:07:53,959 [INFO]  Epoch[2] Time cost=8.415
+2023-06-07 23:07:53,962 [INFO]  Saved checkpoint to "gender\model-0002.params"
+2023-06-07 23:07:54,667 [INFO]  Epoch[2] Validation-cross-entropy=0.346953
+2023-06-07 23:07:54,668 [INFO]  Epoch[2] Validation-gender-accuracy=0.892556
+2023-06-07 23:07:58,819 [INFO]  Epoch[3] Batch [0-398]	Speed: 1538.29 samples/sec	cross-entropy=0.320579	gender-accuracy=0.903979
+2023-06-07 23:08:02,963 [INFO]  Epoch[3] Train-cross-entropy=0.318446
+2023-06-07 23:08:02,964 [INFO]  Epoch[3] Train-gender-accuracy=0.903737
+2023-06-07 23:08:02,964 [INFO]  Epoch[3] Time cost=8.296
+2023-06-07 23:08:02,970 [INFO]  Saved checkpoint to "gender\model-0003.params"
+2023-06-07 23:08:03,662 [INFO]  Epoch[3] Validation-cross-entropy=0.347189
+2023-06-07 23:08:03,662 [INFO]  Epoch[3] Validation-gender-accuracy=0.892556
+2023-06-07 23:08:07,892 [INFO]  Epoch[4] Batch [0-398]	Speed: 1509.58 samples/sec	cross-entropy=0.319325	gender-accuracy=0.903979
+2023-06-07 23:08:12,098 [INFO]  Epoch[4] Train-cross-entropy=0.317235
+2023-06-07 23:08:12,099 [INFO]  Epoch[4] Train-gender-accuracy=0.903737
+2023-06-07 23:08:12,099 [INFO]  Epoch[4] Time cost=8.436
+2023-06-07 23:08:12,102 [INFO]  Saved checkpoint to "gender\model-0004.params"
+2023-06-07 23:08:12,801 [INFO]  Epoch[4] Validation-cross-entropy=0.347377
+2023-06-07 23:08:12,801 [INFO]  Epoch[4] Validation-gender-accuracy=0.892556
+2023-06-07 23:08:17,016 [INFO]  Epoch[5] Batch [0-398]	Speed: 1514.57 samples/sec	cross-entropy=0.318340	gender-accuracy=0.903979
+2023-06-07 23:08:21,170 [INFO]  Epoch[5] Train-cross-entropy=0.316286
+2023-06-07 23:08:21,171 [INFO]  Epoch[5] Train-gender-accuracy=0.903737
+2023-06-07 23:08:21,172 [INFO]  Epoch[5] Time cost=8.370
+2023-06-07 23:08:21,174 [INFO]  Saved checkpoint to "gender\model-0005.params"
+2023-06-07 23:08:21,856 [INFO]  Epoch[5] Validation-cross-entropy=0.347623
+2023-06-07 23:08:21,857 [INFO]  Epoch[5] Validation-gender-accuracy=0.892556
+2023-06-07 23:08:26,025 [INFO]  Epoch[6] Batch [0-398]	Speed: 1531.61 samples/sec	cross-entropy=0.317594	gender-accuracy=0.903979
+2023-06-07 23:08:30,149 [INFO]  Epoch[6] Train-cross-entropy=0.315489
+2023-06-07 23:08:30,150 [INFO]  Epoch[6] Train-gender-accuracy=0.903737
+2023-06-07 23:08:30,150 [INFO]  Epoch[6] Time cost=8.294
+2023-06-07 23:08:30,153 [INFO]  Saved checkpoint to "gender\model-0006.params"
+2023-06-07 23:08:30,866 [INFO]  No improvement detected for 5 epochs compared to 0.34668433975972485 last error obtained: 0.3480151787902532, stopping here
+2023-06-07 23:08:30,867 [INFO]  
+========== done (63.307154178619385 s) fit model
