@@ -2,13 +2,13 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 
-def preprocess(df):
+def clean_data(df):
     '''
-    This function applies preprocessing specific to the HR dataset with missing values filled.
-    The details are adapted from the same preprocessing process used in preliminary data exploration.
+    This function applies preprocessing to the HR dataset with missing values filled.
+    The details are adapted from the preprocessing process used in preliminary data exploration.
     '''
     # `city`: create a bin for cities with fewer than `threshold` instances.
     threshold = 200
@@ -42,10 +42,7 @@ def preprocess(df):
 
     return df
 
-def lrmodel(df):
-    '''
-    This function prints out the performance metrics of using a logistic regression model on the preprocessed data.
-    '''
+def preprocess(df):
     # Use `get_dummies` to encode all categorical features.
     df = pd.get_dummies(df)
     
@@ -69,15 +66,29 @@ def lrmodel(df):
     # Due to imbalanced target values, instantiate the random oversampler model.
     ros = RandomOverSampler(random_state=42)
     X_res, y_res = ros.fit_resample(X_train_scaled, y_train)
+    
+    return X_res, X_test_scaled, y_res, y_test
 
+def lr_model(X_train, X_test, y_train, y_test):
+    '''
+    This function fits a logistic regression model on the preprocessed data and prints out the performance metrics.
+    '''
     # Implement a logistic regression classifier.
     classifier = LogisticRegression(solver='lbfgs', random_state=42)
-    classifier.fit(X_res, y_res)
-    predictions = classifier.predict(X_test_scaled)
-
-    # Display the accuracy score for the test dataset.
-    print(f'Accuracy score: {accuracy_score(y_test, predictions):.2f}')
+    classifier.fit(X_train, y_train)
+    y_pred = classifier.predict(X_test)
+    
+    # Print out the performance metrics.
+    perf_metrics(y_test, y_pred)
+    
+def perf_metrics(y_test, y_pred):
+    '''
+    This function prints out accuracy score, ROC AUC score, and classification report based on targets and predictions.
+    '''
+    # Display the ROC AUC score for the testing set.
+    print(f'ROC AUC: {roc_auc_score(y_test, y_pred):.2f}')
 
     # Display the classification report.
     target_names = ['stay', 'leave']
-    print(classification_report(y_test, predictions, target_names=target_names))
+    print('Classification report:')
+    print(classification_report(y_test, y_pred, target_names=target_names))
