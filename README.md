@@ -19,9 +19,9 @@ Methodology
 - Extract important features for visualization as well as model tuning
 
 ### 2.1 Baseline Workflow
-This baseline workflow is detailed in [`0_prelim`](notebooks/0_prelim.ipynb), which consists of the initial preprocessing of the dataset and training of a logistic regression model. There are a few outstanding characteristics associated with this dataset.
+This baseline workflow is detailed in [`0_prelim`](notebooks/0_prelim.ipynb), which consists of the initial preprocessing of the dataset and training of a logistic regression model.
 
-Excluding the row identifier (`enrollee_id`) and the target (`target`), which are a total of 13 features, most of which are categorical and missing values to varying degrees, as shown in the table below. 
+Excluding the row identifier (`enrollee_id`) and the target (`target`), there are a total of 12 features in the dataset, most of which are categorical and missing values to varying degrees, as shown in the table below. 
 
 | Feature | Type | Count of missing values (out of 19158) |
 | --- | --- | --- |
@@ -38,9 +38,11 @@ Excluding the row identifier (`enrollee_id`) and the target (`target`), which ar
 | `last_new_job` | categorical | 423 |
 | `training_hours` | numerical | 0 |
 
-In preparation for machine learning algorithms, each categorical feature is converted into a one-hot representation. For features with high cardinality such as `city`, one-hot encoding will result in a large number of input features due to a large number of possible categories; as such, the categories with instance counts below a threshold (in `city`'s case, set at 200) are binned together. The missing values, on the other hand, is more problematic. As an initial pass, the missing values of each feature are imputed with its mode. As for the numerical values, they are scaled using 
+In preparation for machine learning algorithms, each categorical feature is converted into a one-hot representation. For features with high cardinality such as `city`, one-hot encoding will result in a large number of input features due to a large number of possible categories; as such, the categories with instance counts below a threshold (in `city`'s case, set at 200) are binned together. The missing values, on the other hand, is more problematic. As an initial pass, considering that all features with null values are categorical, the missing values are imputed with its mode. As for the numerical features, they are standardized using `StandardScaler`.  
 
-The target column, with its 0's and 1's, is what the model aims to predict. 1's represent employees leaving their current employment and 0's employees staying at their current employment. The target is imbalanced. As a result, in order to achieve better model performance, the relative porportions of 1's and 0's are maintained for splitting the dataset into training and testing sets (by setting `stratify=y` for `train_test_split`). In addition, `RandomOverSampler` is employed to ensure there are an equal number of 1's and 0's for the training data.
+The target column, with its 0's and 1's, is what the model aims to predict. 1's represent employees leaving their current employment and 0's employees staying at their current employment. The target is imbalanced. As a result, in order to achieve better model performance, the relative porportions of 1's and 0's are kept when splitting the dataset into training and testing sets (by setting `stratify=y` for `train_test_split`). In addition, `RandomOverSampler` is employed to ensure there are an equal number of 1's and 0's for the training set.
+
+Once the preprocessing steps are completed, a basic linear regression model is trained on the training data. The model is able to achieve 0.74 accuracy and 0.74 recall, which establishes a good starting point. Due to the imbalanced target values in the testing data, the area under the receiver operating characteristic curve (ROC AUC) is used subsequently in place of accuracy to measure the model's ability to distinguish between the positive and negative classes. Recall is also of interest because the model's ability to predict individuals leaving their current employmnet is an important objective of the analysis. ROC AUC and recall scores are the primary metrics to evaluate models for the rest of the study.
 
 ### 2.2 Handling Missing Values
 To establish a baseline for our study, we 
