@@ -1,6 +1,7 @@
 # proj4
 
-Collaborators: Mingyao Gu, Arsam Ijaz, Ronald Lam, and Daniel Yoon 
+Collaborators: Mingyao Gu, Arsam Ijaz, Ronald Lam, and Daniel Yoon
+
 Last updated: June 13, 2023
 
 ## 1.0 Introduction
@@ -63,29 +64,38 @@ Because predicting whether or not an employee is leaving their current job is a 
 | RBF SVC | 0.77 | 0.72 |
 | Random Forest | 0.74 | 0.47 |
 
-To see if even higher ROC AUC and recall can be achieved, a deep neural network model with hyperparameter tuning is implemented with the metric objective set to maximizing ROC AUC. Its details are documented in [`2_dnn_search`](2_dnn_search.ipynb). Based on a single stratified random sampling of a training set and a test set, the best model hyperparameters found include a first layer of 100 neurons with two additional hidden layers, each with 30 and 40 neurons, respectively. The activation functions are set to `relu` for the hidden layers and `sigmoid` for the output layer. The model results in a ROC AUC score of 0.80 and a recall score of 0.75 (without cross-validation), which is promising and warrants future investigation beyond the current scope of the project. Since logistic regression achieves the highest ROC AUC and recall scores of the cross-validated models investigated and offers higher interpretability regarding the relative importance of features, it is used for further study.
+To see if even higher ROC AUC and recall can be achieved, a deep neural network model with hyperparameter tuning is implemented with the metric objective set to maximizing ROC AUC. Its details are documented in [`2_dnn_search`](2_dnn_search.ipynb). Based on a single stratified random sampling of a training set and a test set, the best model hyperparameters found include a first layer of 100 neurons with two additional hidden layers, each with 30 and 40 neurons, respectively. The activation functions are set to `relu` for the hidden layers and `sigmoid` for the output layer. The model results in a ROC AUC score of 0.80 and a recall score of 0.75 (without cross-validation), which is promising and warrants future investigation beyond the current project scope. 
 
 ### 2.4 Feature Importance
+Since logistic regression achieves the highest ROC AUC and recall scores of the cross-validated models investigated while offering high interpretability regarding the relative importance of features, it is used to extract features that are considered important by the model in the classification outcome. The details are documented in [`3_feature_importance`](3_feature_importance.ipynb). The important features include city development index, city, relevant experience, education level, and company size. These features in relation to target outcome is explored in the next section.
+
+Another utility that comes out of feature importance analysis is that using only these features for the cross-validation process allows us to evaluate the model performance with lower input cost. While only 20 features (including all one-hot representations with high importance) are used in comparison with 59 used previosuly, the ROC AUC and recall scores achieved by each model are preserved and in the case of random forest signifcantly improved in terms of recall, as shown by the table below.
+
+| Model | ROC AUC | Recall |
+| --- | --- | --- |
+| Logistic Regression | 0.78 | 0.73 |
+| RBF SVC | 0.77 | 0.73 |
+| Random Forest | 0.74 | 0.70 |
 
 ## 3.0 Visualization
 To gain a deeper understanding of the factors that contribute to an employee in the data science field leaving their current employment, visualizations were created using the matplotlib library. The data used for plotting the bar charts is from the "cleaned_mode.csv" file.
 
-**Education Level**
+### Education Level
 One of the factors that stood out in the feature importance score was the education level of the employees. 
 The bar chart revealed that employees with a "Graduate" education level were more likely to leave compared to employees with other education levels. This finding aligns with the predictions made by the model (based on the Feature Importance score) and suggests that higher education levels may contribute to higher employee retention rates.
 
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_Education.png)
 
-**Relevant Experience**
+### Relevant Experience
 Another important factor identified by the model was the relevance of experience. 
 The visualization indicated that employees with relevant experience were more likely to stay at their current employment compared to those without relevant experience. This observation also supports the model's prediction and suggests that having relevant experience is a contributing factor in employee retention.
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_Relevant_Exp.png)
 
-**City Development Index**
+### City Development Index
 The visualization showed a clear trend that as the CDI increased, the likelihood of employees staying at their current employment also increased. This finding supports the model's prediction and suggests that employees in cities with higher development indexes may have better job opportunities for career growth, leading to higher retention rates.
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CDI1.png)
 
-**Company Size**
+### Company Size
 The visualization revealed that employees in companies with a size of 50-99 had the highest leave rate, contradicting the model's prediction that companies with less than 10 employees would have the highest leave rate. This finding emphasizes the importance of visualizing the data and testing with multiple models to uncover insights that may not align with initial expectations.
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CompanySize.png)
 
