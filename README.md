@@ -65,6 +65,28 @@ Cross validation demonstrates the following key points. RBF SVC results in an av
 ### 2.4 Feature Importance and Selection
 
 ## 3.0 Visualization
+To gain a deeper understanding of the factors that contribute to an employee in the data science field leaving their current employment, visualizations were created using the matplotlib library. The data used for plotting the bar charts is from the "cleaned_mode.csv" file.
+
+**Education Level**
+One of the factors that stood out in the feature importance score was the education level of the employees. 
+The bar chart revealed that employees with a "Graduate" education level were more likely to leave compared to employees with other education levels. This finding aligns with the predictions made by the model (based on the Feature Importance score) and suggests that higher education levels may contribute to higher employee retention rates.
+
+![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_Education.png)
+
+**Relevant Experience**
+Another important factor identified by the model was the relevance of experience. 
+The visualization indicated that employees with relevant experience were more likely to stay at their current employment compared to those without relevant experience. This observation also supports the model's prediction and suggests that having relevant experience is a contributing factor in employee retention.
+![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_Relevant_Exp.png)
+
+**City Development Index**
+The visualization showed a clear trend that as the CDI increased, the likelihood of employees staying at their current employment also increased. This finding supports the model's prediction and suggests that employees in cities with higher development indexes may have better job opportunities for career growth, leading to higher retention rates.
+![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CDI1.png)
+
+**Company Size**
+The visualization revealed that employees in companies with a size of 50-99 had the highest leave rate, contradicting the model's prediction that companies with less than 10 employees would have the highest leave rate. This finding emphasizes the importance of visualizing the data and testing with multiple models to uncover insights that may not align with initial expectations.
+![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CompanySize.png)
+
+These visualizations helps provide a clear representation of the relationships between different factors and employee retention, validating the predictions made by the model and highlighting areas that organizations can focus on to improve employee retention strategies.
 
 ## 4.0 Conclusion
 
