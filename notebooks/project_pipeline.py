@@ -43,10 +43,14 @@ def clean_data(df):
     return df
 
 def preprocess(df):
+    '''
+    This function applies the preprocessing steps to any cleaned dataset (without missing values).
+    It performs one-hot encoding, splitting of data into training and test sets by maintaining the percentage of sample of each target classs, standardizing the numerical features, and oversampling thte minority target class.
+    '''
     # Use `get_dummies` to encode all categorical features.
     df = pd.get_dummies(df)
     
-    # Split the data into a training set and a testing set.
+    # Split the data into a training set and a test set.
     y = df.target
     X = df.drop(columns='target')
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, stratify=y)
