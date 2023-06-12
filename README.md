@@ -1,5 +1,8 @@
 # proj4
 
+Collaborators: Mingyao Gu, Arsam Ijaz, Ronald Lam, and Daniel Yoon 
+Last updated: June 13, 2023
+
 ## 1.0 Introduction
 Since data-related (analytics, science, engineering) jobs are in high demand, employees are hard to retain.
 Why is the study of interest? 
@@ -19,7 +22,7 @@ Methodology
 - Extract important features for visualization as well as model tuning
 
 ### 2.1 Baseline Workflow
-This baseline workflow is detailed in [`0_prelim`](notebooks/0_prelim.ipynb), which consists of the initial preprocessing of the dataset and training of a logistic regression model.
+This baseline workflow is detailed in [`0_prelim`](notebooks/0_prelim.ipynb), which consists of the initial preprocessing of the dataset and training of a logistic regression model. The original data is read from a SQL database. (Expand on this.)
 
 Excluding the row identifier (`enrollee_id`) and the target (`target`), there are a total of 12 features in the dataset, most of which are categorical and missing values to varying degrees, as shown in the table below. 
 
@@ -38,7 +41,7 @@ Excluding the row identifier (`enrollee_id`) and the target (`target`), there ar
 | `last_new_job` | categorical | 423 |
 | `training_hours` | numerical | 0 |
 
-In preparation for machine learning algorithms, each categorical feature is converted into a one-hot representation. For features with high cardinality such as `city`, one-hot encoding will result in a large number of input features due to a large number of possible categories; as such, the categories with instance counts below a threshold (in `city`'s case, set at 200) are binned together. The missing values, on the other hand, is more problematic. As an initial pass, considering that all features with null values are categorical, the missing values are imputed with its mode. As for the numerical features, they are standardized using `StandardScaler`.  
+In preparation for machine learning algorithms, each categorical feature is converted into a one-hot representation. For features with high cardinality such as `city`, one-hot encoding will result in a large number of input features due to a large number of possible categories; as such, the categories with instance counts below a threshold (in `city`'s case, set at 200) are binned together. The missing values, on the other hand, is more problematic. As an initial pass, considering that all features with null values are categorical, the missing values for each feature are imputed with its mode. As for the numerical features, they are standardized using `StandardScaler`.  
 
 The target column, with its 0's and 1's, is what the model aims to predict. 1's represent employees leaving their current employment and 0's employees staying at their current employment. The target is imbalanced. As a result, in order to achieve better model performance, the relative porportions of 1's and 0's are kept when splitting the dataset into training and test sets (by setting `stratify=y` for `train_test_split`). In addition, `RandomOverSampler` is employed to ensure there are an equal number of 1's and 0's for the training set.
 
@@ -49,10 +52,10 @@ Before trying out various machine learning models, the impact of different ways 
 
 Dropping all null values results in a dataset with only 8955 rows and in turn a slightly lower AUC ROC score (from 0.74 to 0.73) and a considerably lower recall score for predicting individuals leaving their current employment (from 0.74 to 0.63). Since a higher recall score is of interest to the study, this approach of handling missing values is not considered subsequently.
 
-Since all features missing values are categorical, Datawig is chosen due to its support for imputation of categorical features. Its `SimpleImputer` (not to be confused with the similarly named function from Scikit-Learn) allows specifying the input columns containing useful data for imputation, the output column to impute values for, and the output path storing model data and metrics \[[1](#references)\]. To provide more input columns for the algorithm, the missing values of those features with fewer than 500 null instances are removed, which results in a dataset of 18014 rows. Different ways of forming the training data, which involve randomly performing an 80-20 split on the dataset or using all non-null rows, are documented in [`1_datawig_training_with_nans`](1_datawig_training_with_nans.ipynb) and [`1_datawig_training_without_nans`](1_datawig_training_without_nans.ipynb). The performance metrics obtained with either Datawig imputation show that the logistic regression model results in slightly lower ROC AUC (from 0.74 to 0.72) and lower recall (from 0.74 to 0.69) in comparison with those obtained with mode imputation. Considering that the latter is also computationally less intensive, it is used for the rest of the analysis.
+Since all features missing values are categorical, Datawig is chosen due to its support for imputation of categorical features. Its `SimpleImputer` (not to be confused with the similarly named function from Scikit-Learn) allows specifying the input columns containing useful data for imputation, the output column to impute values for, and the output path storing model data and metrics \[[1](#references)\]. To provide more input columns for the algorithm, the missing values of those features with fewer than 500 null instances are removed, which results in a dataset of 18014 rows. Different ways of forming the training data, which involve randomly performing an 80-20 split on the dataset or using all non-null rows, are documented in [`1_datawig_training_with_nans`](1_datawig_training_with_nans.ipynb) and [`1_datawig_training_without_nans`](1_datawig_training_without_nans.ipynb). The performance metrics obtained with either Datawig imputation show that the logistic regression model results in slightly lower ROC AUC (from 0.74 to 0.72) and lower recall (from 0.74 to 0.69) in comparison with those obtained with mode imputation. Considering that the latter is also computationally less intensive, data cleaned using mode imputation is used for the rest of the analysis.
 
-### 2.3 Cross Validation
-Because predicting whether or not an employee is leaving their current employment is a supervised binary classification task, the models chosen for it include a logistic regression model (linear), a support vector classifier (SVC) with RBF kernel (non-linear), and a random forest classifer (ensemble). To evaluate these models, Scikit-Learn's k-fold cross-validation feature is utilized, its details documented in [`2_cross_validation_lr_svc_rf`](2_cross_validation_lr_svc_rf.ipynb). More specifically, the dataset is randomly split into 10 nonoverlapping subsets or folds, and each model is trained 10 times, picking a different fold for evaluation and using the other 9 folds for training every time. In addition, the aforemtioned preprocessing considerations, such as preserving the percentage of sample for each target class, over-sampling the minority target class by picking samples at random with replacement, and standardizing numerical features, are built into the cross-validation process using `pipeline` from `imblearn`. The performance metrics for each model are summarized in the following table.
+### 2.3 Model Selection
+Because predicting whether or not an employee is leaving their current job is a supervised binary classification task, the models chosen for it include a logistic regression model (linear), a support vector classifier (SVC) with RBF kernel (non-linear), and a random forest classifer (ensemble). To compare these models, Scikit-Learn's k-fold cross-validation feature is utilized, its details documented in [`2_cross_validation_lr_svc_rf`](2_cross_validation_lr_svc_rf.ipynb). More specifically, the dataset is randomly split into 10 nonoverlapping subsets or folds, and each model is trained 10 times, picking a different fold for evaluation and using the other 9 folds for training every time. In addition, the aforemtioned preprocessing considerations, such as preserving the percentage of sample for each target class, over-sampling the minority target class by picking samples at random with replacement, and standardizing numerical features, are built into the cross-validation process using `pipeline` from `imblearn`. The performance metrics for each model are summarized in the following table. Cross validation demonstrates that logistic regression and RBF SVC yield similar performance metrics, with the former producing slightly higher ROC AUC and recall. Random forest performs poorly by comparison, producing a considerably lower recall than the other two models. Therefore, it is not recommended for this classification task.
 
 | Model | ROC AUC | Recall |
 | --- | --- | --- |
@@ -60,9 +63,9 @@ Because predicting whether or not an employee is leaving their current employmen
 | RBF SVC | 0.77 | 0.72 |
 | Random Forest | 0.74 | 0.47 |
 
-Cross validation demonstrates the following key points. RBF SVC results in an average ROC AUC score of about 0.77, which is above and close to 0.74 achieved with a single random split. Random forest classifier results in an average ROC AUC score of 0.74, which is 0.08 higher than the score achieved with a single random split. However, the average recall obtained is considerably lower than the other two models. Since predicting individuals leaving their current employment is an important objective of the analysis, random forest classifer is not recommended for this classification task. Logistic regression results in an average ROC AUC score of about 0.78, which is above and close to 0.74 achieved with a single random split. Since it achieves the highest ROC AUC and recall scores of the three models investigated, it is used for further study regarding feature importance.
+To see if even higher ROC AUC and recall can be achieved, a deep neural network model with hyperparameter tuning is implemented with the metric objective set to maximizing ROC AUC. Its details are documented in [`2_dnn_search`](2_dnn_search.ipynb). Based on a single stratified random sampling of a training set and a test set, the best model hyperparameters found include a first layer of 100 neurons with two additional hidden layers, each with 30 and 40 neurons, respectively. The activation functions are set to `relu` for the hidden layers and `sigmoid` for the output layer. The model results in a ROC AUC score of 0.80 and a recall score of 0.75 (without cross-validation), which is promising and warrants future investigation beyond the current scope of the project. Since logistic regression achieves the highest ROC AUC and recall scores of the cross-validated models investigated and offers higher interpretability regarding the relative importance of features, it is used for further study.
 
-### 2.4 Feature Importance and Selection
+### 2.4 Feature Importance
 
 ## 3.0 Visualization
 To gain a deeper understanding of the factors that contribute to an employee in the data science field leaving their current employment, visualizations were created using the matplotlib library. The data used for plotting the bar charts is from the "cleaned_mode.csv" file.
@@ -92,7 +95,7 @@ These visualizations helps provide a clear representation of the relationships b
 
 ## References
 
-[1]: https://datawig.readthedocs.io/en/latest/source/API.html
+1. https://datawig.readthedocs.io/en/latest/source/API.html
 
 ## Appendix
 
