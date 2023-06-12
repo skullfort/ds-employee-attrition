@@ -11,10 +11,10 @@ This becomes a problem for companies that need to maintain operational momentum,
 
 Among the many reasons for employees quitting, “desire to learn new skills” in in the top 5. Employers have been observing that employees tend to take on online schools AFTER work hours to learn new skills, and majorly this raises concerns with the outcome of the employee leaving upon a better opportunity. 
 In order to mitigate the risk of employees leaving, companies have now started to assess the benefit of providing fresh new skills to their employees in order to:
-    1.	Engage employee to see the job as more than the daily requirements
-    2.	Improve work culture by introducing fresh ideas
-    3.	Benefitting from employees that will be more educated and able to improve their own performances
-    4.	Regain the employees’ attention back on the employment by employing the newly found skills.
+* 1. Engage employee to see the job as more than the daily requirements
+* 2. Improve work culture by introducing fresh ideas
+* 3. Benefitting from employees that will be more educated and able to improve their own performances
+* 4. Regain the employees’ attention back on the employment by employing the newly found skills.
 
 However, this also creates an opportunity for the company to assess how they should be investing in new skills, whom they should be investing in, and how can they ensure that the likelihood of employees leaving is minimized.
 
