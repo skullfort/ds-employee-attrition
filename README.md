@@ -19,8 +19,8 @@ In order to mitigate the risk of employees leaving, companies have now started t
 However, this also creates an opportunity for the company to assess how they should be investing in new skills, whom they should be investing in, and how can they ensure that the likelihood of employees leaving is minimized.
 
 This study focuses on a dataset acquire be a company that provides training to employees of various companies. The subject companies have asked them to develop a system that allows insight on:
-[a] The likelihood of an employee remaining with the company, and
-[b] What are the characteristics of an employee remaining with the company.
+* a) The likelihood of an employee remaining with the company, and
+* b) What are the characteristics of an employee remaining with the company.
 
 ## 2.0 Analysis
 The notebooks that document the analytical procedure can be found in the [notebooks](notebooks/) folder, where they are numbered to indicate different parts of the study in sequence. The pipeline components repeatedly used are made into functions and grouped in the [`project_pipeline`](notebooks/project_pipeline.py) module to make the notebooks easier to read and navigate.
