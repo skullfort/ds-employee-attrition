@@ -11,16 +11,16 @@ This becomes a problem for companies that need to maintain operational momentum,
 
 Among the many reasons for employees quitting, “desire to learn new skills” in in the top 5. Employers have been observing that employees tend to take on online schools AFTER work hours to learn new skills, and majorly this raises concerns with the outcome of the employee leaving upon a better opportunity. 
 In order to mitigate the risk of employees leaving, companies have now started to assess the benefit of providing fresh new skills to their employees in order to:
-    1)	Engage employee to see the job as more than the daily requirements
-    2)	Improve work culture by introducing fresh ideas
-    3)	Benefitting from employees that will be more educated and able to improve their own performances
-    4)	Regain the employees’ attention back on the employment by employing the newly found skills.
+    1.	Engage employee to see the job as more than the daily requirements
+    2.	Improve work culture by introducing fresh ideas
+    3.	Benefitting from employees that will be more educated and able to improve their own performances
+    4.	Regain the employees’ attention back on the employment by employing the newly found skills.
 
 However, this also creates an opportunity for the company to assess how they should be investing in new skills, whom they should be investing in, and how can they ensure that the likelihood of employees leaving is minimized.
 
 This study focuses on a dataset acquire be a company that provides training to employees of various companies. The subject companies have asked them to develop a system that allows insight on:
-    a)	The likelihood of an employee remaining with the company, and
-    b)	What are the characteristics of an employee remaining with the company.
+    a.	The likelihood of an employee remaining with the company, and
+    b.	What are the characteristics of an employee remaining with the company.
 
 ## 2.0 Analysis
 The notebooks that document the analytical procedure can be found in the [notebooks](notebooks/) folder, where they are numbered to indicate different parts of the study in sequence. The pipeline components repeatedly used are made into functions and grouped in the [`project_pipeline`](notebooks/project_pipeline.py) module to make the notebooks easier to read and navigate.
