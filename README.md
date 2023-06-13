@@ -76,7 +76,7 @@ Because predicting whether or not an employee is leaving their current job is a 
 To see if even higher ROC AUC and recall can be achieved, a deep neural network model with hyperparameter tuning is implemented with the metric objective set to maximizing ROC AUC. Its details are documented in [`2_dnn_search`](2_dnn_search.ipynb). Based on a single stratified random sampling of a training set and a test set, the best model hyperparameters found include a first layer of 100 neurons with two additional hidden layers, each with 30 and 40 neurons, respectively. The activation functions are set to `relu` for the hidden layers and `sigmoid` for the output layer. The model results in a ROC AUC score of 0.80 and a recall score of 0.75 (without cross-validation), which is promising and warrants future investigation but is beyond the current project scope. 
 
 ### 2.4 Feature Importance
-Since logistic regression achieves the highest ROC AUC and recall scores of the cross-validated models investigated while offering high interpretability regarding the relative importance of features, it is used to extract features that are considered important by the model in the classification outcome. The details are documented in [`3_feature_importance`](3_feature_importance.ipynb). The important features include city development index, city, relevant experience, education level, and company size. These features in relation to target outcome is explored in the next section.
+Since logistic regression achieves the highest ROC AUC and recall scores of the cross-validated models investigated while offering high interpretability regarding the relative importance of features, it is used to extract features that are considered important by the model in the classification outcome. The details are documented in [`3_feature_importance`](3_feature_importance.ipynb). The important features include city development index, relevant experience, education level, and company size. These features in relation to target outcome is explored in the next section.
 
 Another utility that comes out of feature importance analysis is that using only these features for the cross-validation process allows us to evaluate the model performance with lower input cost. Although only 20 features (including all one-hot representations with high importance) are used as a result of feature selection in comparison with 59 used originally, the ROC AUC and recall scores achieved by each model are preserved and in the case of random forest signifcantly improved in terms of recall, as shown by the table below.
 
@@ -111,6 +111,10 @@ The visualization revealed that employees in companies with a size of 50-99 had 
 These visualizations helps provide a clear representation of the relationships between different factors and employee retention, validating the predictions made by the model and highlighting areas that organizations can focus on to improve employee retention strategies.
 
 ## 4.0 Conclusion
+
+- Cross validation shows that logistic regression yields the best ROC AUC (0.78) and recall (0.73) with and without feature selection, closely followed by RBG SVM. Random forest does not fare as well as these two models.
+- Deep neural network is very promising in delivering even higher ROC AUC and recall.
+- Key features extracted from the logistic regression model include city development index, relevant experience, education level, and company size.
 
 ## References
 
