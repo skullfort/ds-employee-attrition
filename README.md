@@ -1,26 +1,15 @@
-# proj4
+# Employee Attrition in Data Science
 
 Collaborators: Mingyao Gu, Arsam Ijaz, Ronald Lam, and Daniel Yoon
 
 Last updated: June 13, 2023
 
 ## 1.0 Introduction
-With the increasing access to new opportunities and new talent across the globe, job retention for companies has become increasingly difficult. Over the past X years for example, the average likelihood of employees remaining with a company drops by 17% between just the 1 and second year. For industries invested in data science in particular, we have employees remaining at the company at an average of 1.7 years. 
+With increasing access to new opportunities and talent across the globe, job retention for companies has become increasingly difficult. Over the past few years for example, the average likelihood of employees remaining with a company drops by 17% between just the first and second year. For industries invested in data science in particular, employees remain at the company for an average of 1.7 years. This becomes a problem for companies that need to maintain operational momentum, which once disturbed has heavy costs. In 2022 alone, the overall cost of voluntary employer turnover amounted to over $1T (calculated based on an average 6-9 months’ worth of salary per employee which includes costs incurred in waiting for resources to be hired and hiring costs themselves) \[[1](#references)\].
 
-This becomes a problem for companies that need to maintain operational momentum, which once disturbed has heavy costs. In 2022 alone, the overall cost od voluntary employer turnover amounted to over $1T. And this is calculated based on an average 6-9 months’ worth of salary per employee which includes costs incurred in waiting for resources to be hired and hiring costs themselves.
+Among the many reasons for employees quitting, the desire to learn new skills is in the top 5. Learning new skills through taking online courses after work hours prepares employees for leaving their current employment upon better opportunities. In order to mitigate employee attrition, companies have now started to assess the benefit of providing fresh new skills to their employees. The potential benefits include engaging employees to see jobs as more than daily routines, improving work culture with fresh ideas, and regaining employee attention by encouraging them to employ the newly found skills. To this end, this requires employers to assess how they should be investing in new skills, whom they should be investing in, and how can they ensure that the likelihood of employees leaving is minimized.
 
-Among the many reasons for employees quitting, “desire to learn new skills” in in the top 5. Employers have been observing that employees tend to take on online schools AFTER work hours to learn new skills, and majorly this raises concerns with the outcome of the employee leaving upon a better opportunity. 
-In order to mitigate the risk of employees leaving, companies have now started to assess the benefit of providing fresh new skills to their employees in order to:
-* 1. Engage employee to see the job as more than the daily requirements
-* 2. Improve work culture by introducing fresh ideas
-* 3. Benefitting from employees that will be more educated and able to improve their own performances
-* 4. Regain the employees’ attention back on the employment by employing the newly found skills.
-
-However, this also creates an opportunity for the company to assess how they should be investing in new skills, whom they should be investing in, and how can they ensure that the likelihood of employees leaving is minimized.
-
-This study focuses on a dataset acquire be a company that provides training to employees of various companies. The subject companies have asked them to develop a system that allows insight on:
-* a) The likelihood of an employee leaving the company, and
-* b) What are the characteristics of an employee leaving the company.
+This study focuses on a dataset acquired by be a company that provides training to employees of various companies in the field of data science\[[2](#references)\]. The study applies machine learning to predict the likelihood of employees leaving their current employment and aims to shed light on the characteristics of those who do.
 
 ## 2.0 Analysis
 The notebooks that document the analytical procedure can be found in the [notebooks](notebooks/) folder, where they are numbered to indicate different parts of the study in sequence. The pipeline components repeatedly used are made into functions and grouped in the [`project_pipeline`](notebooks/project_pipeline.py) module to make the notebooks easier to read and navigate.
@@ -62,7 +51,7 @@ Before trying out various machine learning models, the impact of different ways 
 
 Dropping all null values results in a dataset with only 8955 rows and in turn a slightly lower AUC ROC score (from 0.74 to 0.73) and a much lower recall score for predicting individuals leaving their current employment (from 0.74 to 0.63). Since a higher recall score is of interest, this approach of handling missing values is not considered subsequently.
 
-Because all features missing values are categorical, Datawig is chosen due to its support for imputation of categorical features. Its `SimpleImputer` (not to be confused with the similarly named function from Scikit-Learn) allows specifying the input columns containing useful data for imputation, the output column to impute values for, and the output path storing model data and metrics \[[1](#references)\]. To provide more input columns for the algorithm, the missing values of those features with fewer than 500 null instances are removed, which results in a dataset of 18014 rows. Different ways of forming the training data, which involve randomly performing an 80-20 split on the dataset or using all non-null rows, are documented in [`1_datawig_training_with_nans`](1_datawig_training_with_nans.ipynb) and [`1_datawig_training_without_nans`](1_datawig_training_without_nans.ipynb). The performance metrics obtained with either Datawig imputation show that the logistic regression model results in slightly lower ROC AUC (from 0.74 to 0.72) and lower recall (from 0.74 to 0.69) in comparison with those obtained with mode imputation. Considering that the latter is also computationally less intensive, the [data cleaned](resources/cleaned_mode.csv) using mode imputation is used for the rest of the analysis.
+Because all features missing values are categorical, Datawig is chosen due to its support for imputation of categorical features. Its `SimpleImputer` (not to be confused with the similarly named function from Scikit-Learn) allows specifying the input columns containing useful data for imputation, the output column to impute values for, and the output path storing model data and metrics \[[3](#references)\]. To provide more input columns for the algorithm, the missing values of those features with fewer than 500 null instances are removed, which results in a dataset of 18014 rows. Different ways of forming the training data, which involve randomly performing an 80-20 split on the dataset or using all non-null rows, are documented in [`1_datawig_training_with_nans`](1_datawig_training_with_nans.ipynb) and [`1_datawig_training_without_nans`](1_datawig_training_without_nans.ipynb). The performance metrics obtained with either Datawig imputation show that the logistic regression model results in slightly lower ROC AUC (from 0.74 to 0.72) and lower recall (from 0.74 to 0.69) in comparison with those obtained with mode imputation. Considering that the latter is also computationally less intensive, the [data cleaned](resources/cleaned_mode.csv) using mode imputation is used for the rest of the analysis.
 
 ### 2.3 Model Selection
 Because predicting whether or not an employee is leaving their current job is a supervised binary classification task, the models chosen for it include a logistic regression model (linear), a support vector classifier (SVC) with RBF kernel (non-linear), and a random forest classifier (ensemble). To compare these models, Scikit-Learn's k-fold cross-validation feature is utilized, its details documented in [`2_cross_validation_lr_svc_rf`](2_cross_validation_lr_svc_rf.ipynb). More specifically, the dataset is randomly split into 10 non-overlapping subsets or folds, and each model is trained 10 times, picking a different fold for evaluation and using the other 9 folds for training every time. In addition, the aforementioned preprocessing considerations, such as preserving the percentage of sample for each target class, over-sampling the minority target class by picking samples at random with replacement, and standardizing numerical features, are built into the cross-validation process using `pipeline` from `imblearn`. The performance metrics for each model are summarized in the following table. Cross validation demonstrates that logistic regression and RBF SVC yield similar performance metrics, with the former producing slightly higher ROC AUC and recall. Random forest performs poorly by comparison, producing a considerably lower recall than the other two models. Therefore, it is not recommended for this classification task.
@@ -112,13 +101,13 @@ These visualizations helps provide a clear representation of the relationships b
 
 ## 4.0 Conclusion
 
-- Cross validation shows that logistic regression yields the best ROC AUC (0.78) and recall (0.73) with and without feature selection, closely followed by RBG SVM. Random forest does not fare as well as these two models.
-- Deep neural network is very promising in delivering even higher ROC AUC and recall.
-- Key features extracted from the logistic regression model include city development index, relevant experience, education level, and company size.
+Cross validation shows that logistic regression yields the best ROC AUC (0.78) and recall (0.73) with and without feature selection, closely followed by RBG SVM. Random forest does not fare as well as these two models. Deep neural network is very promising in delivering even higher ROC AUC and recall and warrants future investigation. Moreover, the key characteristics for predicting employees leaving their jobs, as revealed by the logistic regression model, are city development index, relevant experience, education level, and company size.
 
 ## References
 
-1. https://datawig.readthedocs.io/en/latest/source/API.html
+1. https://www.globenewswire.com/news-release/2021/10/15/2314725/0/en/Study-Reveals-High-Turnover-Rates-Among-Data-Science-Professionals.html
+2. https://www.kaggle.com/datasets/arashnic/hr-analytics-job-change-of-data-scientists?taskId=3015
+3. https://datawig.readthedocs.io/en/latest/source/API.html
 
 ## Appendix
 
