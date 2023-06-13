@@ -5,11 +5,22 @@ Collaborators: Mingyao Gu, Arsam Ijaz, Ronald Lam, and Daniel Yoon
 Last updated: June 13, 2023
 
 ## 1.0 Introduction
-Since data-related (analytics, science, engineering) jobs are in high demand, employees are hard to retain.
-Why is the study of interest? 
-- Understand factors that contribute to an employee in the data science field leaving current employment (forecasting)
-- Install potential measurements that help companies retain employees (prevention)
-This is a superviser machine learning problem, with binary classification as its outcome.
+With the increasing access to new opportunities and new talent across the globe, job retention for companies has become increasingly difficult. Over the past X years for example, the average likelihood of employees remaining with a company drops by 17% between just the 1 and second year. For industries invested in data science in particular, we have employees remaining at the company at an average of 1.7 years. 
+
+This becomes a problem for companies that need to maintain operational momentum, which once disturbed has heavy costs. In 2022 alone, the overall cost od voluntary employer turnover amounted to over $1T. And this is calculated based on an average 6-9 months’ worth of salary per employee which includes costs incurred in waiting for resources to be hired and hiring costs themselves.
+
+Among the many reasons for employees quitting, “desire to learn new skills” in in the top 5. Employers have been observing that employees tend to take on online schools AFTER work hours to learn new skills, and majorly this raises concerns with the outcome of the employee leaving upon a better opportunity. 
+In order to mitigate the risk of employees leaving, companies have now started to assess the benefit of providing fresh new skills to their employees in order to:
+* 1. Engage employee to see the job as more than the daily requirements
+* 2. Improve work culture by introducing fresh ideas
+* 3. Benefitting from employees that will be more educated and able to improve their own performances
+* 4. Regain the employees’ attention back on the employment by employing the newly found skills.
+
+However, this also creates an opportunity for the company to assess how they should be investing in new skills, whom they should be investing in, and how can they ensure that the likelihood of employees leaving is minimized.
+
+This study focuses on a dataset acquire be a company that provides training to employees of various companies. The subject companies have asked them to develop a system that allows insight on:
+* a) The likelihood of an employee leaving the company, and
+* b) What are the characteristics of an employee leaving the company.
 
 ## 2.0 Analysis
 The notebooks that document the analytical procedure can be found in the [notebooks](notebooks/) folder, where they are numbered to indicate different parts of the study in sequence. The pipeline components repeatedly used are made into functions and grouped in the [`project_pipeline`](notebooks/project_pipeline.py) module to make the notebooks easier to read and navigate.
@@ -54,7 +65,7 @@ Dropping all null values results in a dataset with only 8955 rows and in turn a 
 Because all features missing values are categorical, Datawig is chosen due to its support for imputation of categorical features. Its `SimpleImputer` (not to be confused with the similarly named function from Scikit-Learn) allows specifying the input columns containing useful data for imputation, the output column to impute values for, and the output path storing model data and metrics \[[1](#references)\]. To provide more input columns for the algorithm, the missing values of those features with fewer than 500 null instances are removed, which results in a dataset of 18014 rows. Different ways of forming the training data, which involve randomly performing an 80-20 split on the dataset or using all non-null rows, are documented in [`1_datawig_training_with_nans`](1_datawig_training_with_nans.ipynb) and [`1_datawig_training_without_nans`](1_datawig_training_without_nans.ipynb). The performance metrics obtained with either Datawig imputation show that the logistic regression model results in slightly lower ROC AUC (from 0.74 to 0.72) and lower recall (from 0.74 to 0.69) in comparison with those obtained with mode imputation. Considering that the latter is also computationally less intensive, the [data cleaned](resources/cleaned_mode.csv) using mode imputation is used for the rest of the analysis.
 
 ### 2.3 Model Selection
-Because predicting whether or not an employee is leaving their current job is a supervised binary classification task, the models chosen for it include a logistic regression model (linear), a support vector classifier (SVC) with RBF kernel (non-linear), and a random forest classifer (ensemble). To compare these models, Scikit-Learn's k-fold cross-validation feature is utilized, its details documented in [`2_cross_validation_lr_svc_rf`](2_cross_validation_lr_svc_rf.ipynb). More specifically, the dataset is randomly split into 10 non-overlapping subsets or folds, and each model is trained 10 times, picking a different fold for evaluation and using the other 9 folds for training every time. In addition, the aforemtioned preprocessing considerations, such as preserving the percentage of sample for each target class, over-sampling the minority target class by picking samples at random with replacement, and standardizing numerical features, are built into the cross-validation process using `pipeline` from `imblearn`. The performance metrics for each model are summarized in the following table. Cross validation demonstrates that logistic regression and RBF SVC yield similar performance metrics, with the former producing slightly higher ROC AUC and recall. Random forest performs poorly by comparison, producing a considerably lower recall than the other two models. Therefore, it is not recommended for this classification task.
+Because predicting whether or not an employee is leaving their current job is a supervised binary classification task, the models chosen for it include a logistic regression model (linear), a support vector classifier (SVC) with RBF kernel (non-linear), and a random forest classifier (ensemble). To compare these models, Scikit-Learn's k-fold cross-validation feature is utilized, its details documented in [`2_cross_validation_lr_svc_rf`](2_cross_validation_lr_svc_rf.ipynb). More specifically, the dataset is randomly split into 10 non-overlapping subsets or folds, and each model is trained 10 times, picking a different fold for evaluation and using the other 9 folds for training every time. In addition, the aforementioned preprocessing considerations, such as preserving the percentage of sample for each target class, over-sampling the minority target class by picking samples at random with replacement, and standardizing numerical features, are built into the cross-validation process using `pipeline` from `imblearn`. The performance metrics for each model are summarized in the following table. Cross validation demonstrates that logistic regression and RBF SVC yield similar performance metrics, with the former producing slightly higher ROC AUC and recall. Random forest performs poorly by comparison, producing a considerably lower recall than the other two models. Therefore, it is not recommended for this classification task.
 
 | Model | ROC AUC | Recall |
 | --- | --- | --- |
@@ -65,7 +76,7 @@ Because predicting whether or not an employee is leaving their current job is a 
 To see if even higher ROC AUC and recall can be achieved, a deep neural network model with hyperparameter tuning is implemented with the metric objective set to maximizing ROC AUC. Its details are documented in [`2_dnn_search`](2_dnn_search.ipynb). Based on a single stratified random sampling of a training set and a test set, the best model hyperparameters found include a first layer of 100 neurons with two additional hidden layers, each with 30 and 40 neurons, respectively. The activation functions are set to `relu` for the hidden layers and `sigmoid` for the output layer. The model results in a ROC AUC score of 0.80 and a recall score of 0.75 (without cross-validation), which is promising and warrants future investigation but is beyond the current project scope. 
 
 ### 2.4 Feature Importance
-Since logistic regression achieves the highest ROC AUC and recall scores of the cross-validated models investigated while offering high interpretability regarding the relative importance of features, it is used to extract features that are considered important by the model in the classification outcome. The details are documented in [`3_feature_importance`](3_feature_importance.ipynb). The important features include city development index, city, relevant experience, education level, and company size. These features in relation to target outcome is explored in the next section.
+Since logistic regression achieves the highest ROC AUC and recall scores of the cross-validated models investigated while offering high interpretability regarding the relative importance of features, it is used to extract features that are considered important by the model in the classification outcome. The details are documented in [`3_feature_importance`](3_feature_importance.ipynb). The important features include city development index, relevant experience, education level, and company size. These features in relation to target outcome is explored in the next section.
 
 Another utility that comes out of feature importance analysis is that using only these features for the cross-validation process allows us to evaluate the model performance with lower input cost. Although only 20 features (including all one-hot representations with high importance) are used as a result of feature selection in comparison with 59 used originally, the ROC AUC and recall scores achieved by each model are preserved and in the case of random forest signifcantly improved in terms of recall, as shown by the table below.
 
@@ -94,12 +105,16 @@ The visualization showed a clear trend that as the CDI increased, the likelihood
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CDI1.png)
 
 ### Company Size
-The visualization revealed that employees in companies with a size of 50-99 had the highest leave rate, contradicting the model's prediction that companies with less than 10 employees would have the highest leave rate. This finding emphasizes the importance of visualizing the data and testing with multiple models to uncover insights that may not align with initial expectations.
+When we looked at the visualization, it was clear that companies with 50-99 employees had the highest number of employees leaving, just as our model predicted. This helps give us greater assurance in the reliability of our model's accuracy.
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CompanySize.png)
 
 These visualizations helps provide a clear representation of the relationships between different factors and employee retention, validating the predictions made by the model and highlighting areas that organizations can focus on to improve employee retention strategies.
 
 ## 4.0 Conclusion
+
+- Cross validation shows that logistic regression yields the best ROC AUC (0.78) and recall (0.73) with and without feature selection, closely followed by RBG SVM. Random forest does not fare as well as these two models.
+- Deep neural network is very promising in delivering even higher ROC AUC and recall.
+- Key features extracted from the logistic regression model include city development index, relevant experience, education level, and company size.
 
 ## References
 
