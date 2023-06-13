@@ -105,7 +105,7 @@ The visualization showed a clear trend that as the CDI increased, the likelihood
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CDI1.png)
 
 ### Company Size
-The visualization revealed that employees in companies with a size of 50-99 had the highest leave rate, contradicting the model's prediction that companies with less than 10 employees would have the highest leave rate. This finding emphasizes the importance of visualizing the data and testing with multiple models to uncover insights that may not align with initial expectations.
+When we looked at the visualization, it was clear that companies with 50-99 employees had the highest number of employees leaving, just as our model predicted. This helps give us greater assurance in the reliability of our model's accuracy.
 ![Alt text](https://github.com/skullfort/proj4/blob/main/visualizations/Basedon_CompanySize.png)
 
 These visualizations helps provide a clear representation of the relationships between different factors and employee retention, validating the predictions made by the model and highlighting areas that organizations can focus on to improve employee retention strategies.
